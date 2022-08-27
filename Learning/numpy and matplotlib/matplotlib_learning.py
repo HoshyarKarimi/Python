@@ -37,7 +37,7 @@ fruits = {
     "apples": 5,
     "oranges": 10,
     "cucumbers": 3,
-    "pears": 9
+    "pears": 9,
 }
 plt.bar(fruits.keys(), fruits.values())
 plt.show()
