@@ -8,6 +8,7 @@ bs4 = "*"
 mechanicalsoup = "*"
 numpy = "*"
 matplotlib = "*"
+unidecode = "*"
 
 [dev-packages]
 ipykernel = "*"
