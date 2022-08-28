@@ -1,5 +1,6 @@
 from matplotlib import pyplot as plt
 import numpy as np
+from numpy import random
 
 # xs = np.arange(0, 5)
 # y1 = np.arange(1, 6)
@@ -33,11 +34,20 @@ import numpy as np
 # plt.bar(xs, tops)
 # plt.show()
 
-fruits = {
-    "apples": 5,
-    "oranges": 10,
-    "cucumbers": 3,
-    "pears": 9,
-}
-plt.bar(fruits.keys(), fruits.values())
-plt.show()
+# fruits = {
+#     "apples": 5,
+#     "oranges": 10,
+#     "cucumbers": 3,
+#     "pears": 9,
+# }
+# plt.bar(fruits.keys(), fruits.values())
+# plt.show()
+# date = [2, 12, 13, 14, 17, 19, 19, 20, 21, 25, 27, 28, 31]
+# j = [7, 6, 5, 15, 9, 19, 15, 11, 13, 10, 8, 8, 9]
+# plt.plot(date, j, "r")
+# plt.title("At-1")
+# plt.yticks([i for i in range(0, 21, 5)])
+# plt.show()
+
+plt.hist(random.randn(10000), 20)
+plt.savefig('/home/hoshyar/bar.png')
