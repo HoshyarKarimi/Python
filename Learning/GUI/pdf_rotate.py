@@ -1,21 +1,15 @@
 import easygui as gui
-from PyPDF2 import PdfFileReader, PdfFileWriter
+from PyPDF2 import PdfFileReader, PdfFileWriter, errors
+from pathlib import Path
 
 
-while True:
-    input_path = gui.fileopenbox(
-        msg="Select a PDF to rotate...",
-        default="*.pdf"
-    )
-    if input_path is None:
-        exit()
-    magic_number = {'pdf': bytes([0x25, 0x50, 0x44, 0x46])}
-    with open(input_path, mode='rb') as fd:
-        file_head = fd.read(4)
-    if not file_head.startswith(magic_number['pdf']):
-        gui.msgbox("Invalid PDF file!")
-    else:
-        break
+input_path = gui.fileopenbox(
+    msg="Select a PDF to rotate...",
+    default="*.pdf"
+)
+if input_path is None:
+    exit()
+
 
 choices = ('90', '180', '270')
 degrees = gui.buttonbox(
@@ -41,7 +35,14 @@ while input_path == output_path:
 if output_path is None:
     exit()
 
-input_file = PdfFileReader(input_path)
+try:
+    input_file = PdfFileReader(input_path)
+except errors.PdfReadError:
+    gui.msgbox(
+        title="Error opening file",
+        msg=f"{Path(input_path).name} is not a pdf file"
+    )
+    exit()
 output_pdf = PdfFileWriter()
 
 for page in input_file.pages:
