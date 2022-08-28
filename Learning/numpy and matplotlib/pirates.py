@@ -9,13 +9,15 @@ temperature = []
 with open("pirates.csv", mode='r') as csvfile:
     reader = DictReader(csvfile)
     for row in reader:
-        year.append(row["Year"])
-        pirates.append(row["Pirates"])
-        temperature.append(row["Temperature"])
+        year.append(int(row["Year"]))
+        pirates.append(int(row["Pirates"]))
+        temperature.append(float(row["Temperature"]))
 
 plt.plot(pirates, temperature, "b-o")
-plt.xlabel("Pirates")
-plt.ylabel("Temperature")
+plt.title("Global temperature as a function of pirate population")
+plt.xlabel("Total pirates")
+plt.ylabel("Average global temperature (Celsius)")
+plt.axis([-300, 48000, 14, 16])
 for i, txt in enumerate(year):
     plt.annotate(txt, (pirates[i], temperature[i]))
 
