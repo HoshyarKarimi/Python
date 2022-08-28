@@ -41,5 +41,12 @@ while input_path == output_path:
 if output_path is None:
     exit()
 
-# input_file = PdfFileReader(input_path)
-# output_pdf = PdfFileWriter()
+input_file = PdfFileReader(input_path)
+output_pdf = PdfFileWriter()
+
+for page in input_file.pages:
+    page = page.rotate_clockwise(degrees)
+    output_pdf.add_page(page)
+
+with open(output_path, mode='wb') as output_file:
+    output_pdf.write(output_file)
