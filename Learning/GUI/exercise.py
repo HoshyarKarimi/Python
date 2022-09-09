@@ -1,13 +1,12 @@
 import easygui as gui
 from PyPDF2 import PdfFileReader, PdfFileWriter
 
-
 input_path = gui.fileopenbox(
     title="Select a PDF file",
     default="*.pdf",
 )
 
-if input_path == None:
+if input_path is None:
     exit()
 
 while True:
@@ -15,7 +14,7 @@ while True:
         title="PDF page selector",
         msg="Enter start page",
     )
-    if start_page == None:
+    if start_page is None:
         exit()
     start_page = int(start_page)
     if start_page < 0:
@@ -31,7 +30,7 @@ while True:
         title="PDF page selector",
         msg="Enter end page"
     )
-    if end_page == None:
+    if end_page is None:
         exit()
     end_page = int(end_page)
     if end_page < start_page:
@@ -47,7 +46,7 @@ while True:
         title="Save file",
         default="*.pdf",
     )
-    if output_path == None:
+    if output_path is None:
         exit()
     if output_path == input_path:
         gui.msgbox(
@@ -60,8 +59,8 @@ while True:
 pdf_reader = PdfFileReader(input_path)
 pdf_writer = PdfFileWriter()
 
-for i in range(start_page, end_page+1):
-    page = pdf_reader.pages[i-1]
+for i in range(start_page, end_page + 1):
+    page = pdf_reader.pages[i - 1]
     pdf_writer.add_page(page)
 
 with open(output_path, 'wb') as output_file:
