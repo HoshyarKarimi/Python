@@ -9,6 +9,8 @@ pypdf2 = "*"
 requests = "*"
 bs4 = "*"
 mechanicalsoup = "*"
+numpy = "*"
+matplotlib = "*"
 
 [dev-packages]
 
