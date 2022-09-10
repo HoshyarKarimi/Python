@@ -1,5 +1,6 @@
 import tkinter as tk
 
+
 window = tk.Tk()
 message = tk.Label(
     text="GUIs are great!",
