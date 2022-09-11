@@ -12,6 +12,7 @@ mechanicalsoup = "*"
 numpy = "*"
 matplotlib = "*"
 autopep8 = "*"
+jupyterlab = "*"
 
 [dev-packages]
 
